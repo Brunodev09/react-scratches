@@ -4,13 +4,14 @@ import React from 'react';
 const UserItem = (props) => {
 
     return (<div style={myStyle}>
-        hey {props.user}
+        User: {props.user}
     </div>)
 }
 
 const myStyle = {
-    color: 'red',
-    marginLeft: '10px'
+    color: 'black',
+    marginLeft: '10px',
+    textAlign: 'center'
 }
 
 export default UserItem;

@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
+import Search from './components/users/Search';
 import * as axios from 'axios';
 import './App.css';
 
@@ -23,6 +24,10 @@ class App extends Component {
     &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
     if (req && req.data) this.setState({users: req.data, loading: false});
   }
+  
+  searchUsers = text => {
+    console.log(`Teste de props --> ${text}`);
+  }
 
   render() {
 
@@ -30,7 +35,10 @@ class App extends Component {
     return (
       <Fragment>
         <Navbar myTitle={str} />
-        <Users loading={this.state.loading} users={this.state.users} /> 
+        <div className="container">
+          <Search searchUsers={this.searchUsers} />
+          <Users loading={this.state.loading} users={this.state.users} />           
+        </div>
         {/* {loading ? <h4>Loading...</h4> : <h1>Hey {this.getName()}!</h1>} */}
       </Fragment>
     );
